@@ -1,199 +1,75 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desi Dragon | Indian & Chinese Fusion Cuisine</title>
-    <meta name="description" content="Where Indian Soul Meets Chinese Fire. Ultra-premium fusion dining.">
-    
+    <title>Desi Dragon </title>
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Frameworks & Icons -->
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.321.0/font/lucide.min.css">
-
+    <link rel="stylesheet" href="css/style.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        dark: '#0A0A0A',
-                        gold: '#D4AF37',
-                        goldLight: '#FFC72C',
-                        dragonRed: '#8B0000',
-                    },
-                    fontFamily: {
-                        serif: ['Cinzel', 'serif'],
-                        sans: ['Poppins', 'sans-serif'],
-                    }
+                    colors: { dark: '#0A0A0A', gold: '#D4AF37', goldLight: '#FFC72C' },
+                    fontFamily: { serif: ['Cinzel', 'serif'], sans: ['Poppins', 'sans-serif'] }
                 }
             }
         }
     </script>
-
-    <style>
-        /* Custom Cursor */
-        #cursor { width: 20px; height: 20px; background: #FFC72C; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: difference; transition: transform 0.1s; }
-        
-        /* Preloader */
-        #loader { background: #0A0A0A; height: 100vh; width: 100%; position: fixed; z-index: 10000; display: flex; align-items: center; justify-content: center; }
-        
-        .gold-gradient-text {
-            background: linear-gradient(to bottom, #FFC72C, #D4AF37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-    </style>
 </head>
+<body class="bg-dark text-white overflow-x-hidden">
 
-<body class="bg-dark text-white font-sans overflow-x-hidden">
-
-    <!-- Custom Cursor -->
-    <div id="cursor"></div>
-
-    <!-- Preloader -->
-    <div id="loader">
-        <div class="text-center">
-            <div class="w-24 h-24 border-4 border-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <h2 class="font-serif text-gold tracking-[0.5em]">AWAKENING THE DRAGON</h2>
-        </div>
+    <div id="loader" class="fixed inset-0 z-[100] bg-dark flex flex-col items-center justify-center">
+        <div class="w-20 h-20 border-2 border-gold border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="font-serif tracking-[0.3em] text-gold animate-pulse">DESI DRAGON</p>
     </div>
 
-    <!-- 3D BACKGROUND CANVAS -->
-    <canvas id="hero-canvas" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"></canvas>
+    <canvas id="hero-canvas" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
 
-    <!-- NAVIGATION -->
-    <nav class="fixed w-full z-50 px-10 py-6 flex justify-between items-center transition-all duration-500 bg-gradient-to-b from-black/80 to-transparent">
-        <div class="flex items-center gap-2">
-            <img src="assets/logo.png" alt="Desi Dragon Logo" class="h-12 w-auto brightness-125">
-            <span class="font-serif text-xl tracking-tighter hidden md:block">DESI <span class="text-gold">DRAGON</span></span>
+    <nav class="fixed w-full z-50 px-8 py-6 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center text-black font-bold">DD</div>
+            <span class="font-serif text-xl tracking-widest hidden md:block">DESI <span class="text-gold">DRAGON</span></span>
         </div>
-        <div class="hidden md:flex gap-8 font-serif text-sm tracking-widest text-gray-300 uppercase">
-            <a href="#about" class="hover:text-gold transition-colors">Our Story</a>
-            <a href="#menu" class="hover:text-gold transition-colors">Menu</a>
-            <a href="#reservation" class="hover:text-gold transition-colors">Reservations</a>
+        <div class="flex gap-6 items-center">
+            <button class="px-6 py-2 bg-gold text-black font-bold font-serif hover:bg-goldLight transition-all">RESERVE</button>
         </div>
-        <button class="bg-gold text-black px-6 py-2 font-bold font-serif hover:bg-goldLight transition-all">ORDER NOW</button>
     </nav>
 
-    <!-- HERO SECTION -->
-    <section class="h-screen flex flex-col justify-center items-center text-center px-4 relative">
-        <div class="relative z-10">
-            <h2 class="text-goldLight font-serif tracking-[0.3em] uppercase mb-4 opacity-0" id="hero-sub">Desi Taste, Chinese Flame</h2>
-            <h1 class="text-6xl md:text-9xl font-serif font-bold gold-gradient-text mb-8 opacity-0" id="hero-title">
-                DESI DRAGON
-            </h1>
-            <p class="max-w-xl mx-auto text-gray-400 mb-10 opacity-0" id="hero-desc">
-                Where Indian Soul Meets Chinese Fire. Experience the ultimate culinary fusion crafted with traditional wok mastery and desi warmth.
-            </p>
-            <div class="flex flex-col md:flex-row gap-6 justify-center opacity-0" id="hero-btns">
-                <a href="#menu" class="px-10 py-4 bg-gold text-black font-bold flex items-center gap-2 group transition-all">
-                    EXPLORE MENU <i class="lucide-chevron-right group-hover:translate-x-1 transition-transform"></i>
-                </a>
-                <a href="#reservation" class="px-10 py-4 border border-gold/50 text-gold font-bold hover:bg-gold/10 transition-all">
-                    BOOK A TABLE
-                </a>
-            </div>
-        </div>
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 animate-bounce">
-            <div class="w-[1px] h-16 bg-gradient-to-b from-gold to-transparent"></div>
+    <section class="h-screen flex flex-col justify-center items-center text-center px-4">
+        <h2 id="hero-sub" class="text-goldLight font-serif tracking-[0.4em] uppercase mb-4 opacity-0">Desi Taste, Chinese Flame</h2>
+        <h1 id="hero-title" class="text-6xl md:text-9xl font-serif font-bold gold-text mb-8 opacity-0">DESI DRAGON</h1>
+        <div id="hero-btns" class="flex gap-4 opacity-0">
+            <button class="px-8 py-4 bg-gold text-black font-bold hover:scale-105 transition-transform">VIEW MENU</button>
+            <button class="px-8 py-4 border border-gold text-gold hover:bg-gold/10 transition-all">ORDER NOW</button>
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="py-32 px-10 max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-20 items-center">
-            <div class="relative">
-                <img src="https://images.unsplash.com/photo-1512132411229-c30391241dd8?auto=format&fit=crop&q=80" alt="Fusion dish" class="rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
-                <div class="absolute -bottom-10 -right-10 glass-card p-8 hidden md:block">
-                    <p class="text-gold font-serif text-3xl">15+</p>
-                    <p class="text-xs tracking-widest text-gray-400">SIGNATURE SPICES</p>
-                </div>
+    <section id="menu-section" class="py-24 px-6 relative z-10 bg-black/40 backdrop-blur-lg">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-center text-5xl font-serif text-gold mb-16">The Master Menu</h2>
+            <div id="menu-tabs" class="flex flex-wrap justify-center gap-4 mb-12">
+                <!-- Tabs injected by JS -->
             </div>
-            <div>
-                <span class="text-gold font-serif tracking-widest">EST. 2024</span>
-                <h3 class="text-5xl font-serif mt-4 mb-8">A Handshake Between Two Great Traditions.</h3>
-                <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                    Desi Dragon was born from a simple idea — that the comfort of Indian home-cooked spice and the bold fire of Chinese wok cooking don’t have to live on separate menus.
-                </p>
-                <button class="border-b-2 border-gold text-gold py-2 font-serif hover:tracking-widest transition-all">LEARN OUR STORY</button>
+            <div id="menu-grid" class="grid md:grid-cols-2 gap-8 transition-all duration-500">
+                <!-- Items injected by JS -->
             </div>
         </div>
     </section>
 
-    <!-- SIGNATURE DISH SHOWCASE -->
-    <section class="bg-zinc-950 py-32">
-        <div class="text-center mb-20">
-            <h2 class="text-4xl font-serif text-gold">The Wok of Fire</h2>
-            <div class="w-24 h-1 bg-gold mx-auto mt-4"></div>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8 px-10 max-w-7xl mx-auto">
-            <!-- Dish Card -->
-            <div class="glass-card p-6 group cursor-pointer hover:border-gold transition-all">
-                <div class="overflow-hidden rounded-lg mb-6 h-64 bg-zinc-900">
-                    <!-- Placeholder for AI Render -->
-                    <img src="https://images.unsplash.com/photo-1623653387945-2fd25214f8fc?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100">
-                </div>
-                <h4 class="text-xl font-serif text-gold mb-2">Desi Dhuaah Dam Chicken Biryani</h4>
-                <p class="text-gray-500 text-sm mb-4 italic">Smoky, aromatic, and packed with Chinese fusion spices.</p>
-                <span class="text-white font-bold">₹150</span>
-            </div>
-            <!-- More cards... -->
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-dark pt-20 pb-10 border-t border-gold/10">
-        <div class="max-w-7xl mx-auto px-10 flex flex-col md:flex-row justify-between items-center gap-10">
-            <div class="text-center md:text-left">
-                <img src="assets/logo.png" class="h-16 mx-auto md:mx-0 mb-4 brightness-125">
-                <p class="text-gray-500 max-w-xs uppercase text-xs tracking-widest">Desi Taste, Chinese Flame. The ultimate fusion of fire and soul.</p>
-            </div>
-            <div class="flex gap-8 text-gold">
-                <a href="#"><i class="lucide-instagram"></i></a>
-                <a href="#"><i class="lucide-facebook"></i></a>
-                <a href="#"><i class="lucide-phone"></i></a>
-            </div>
-        </div>
-        <div class="text-center mt-20 text-[10px] text-gray-700 tracking-widest uppercase">
-            &copy; 2024 Desi Dragon — Designed with Fire
-        </div>
-    </footer>
-
-    <script>
-        // --- ANIMATIONS ---
-        window.addEventListener('load', () => {
-            // Remove Preloader
-            gsap.to("#loader", { opacity: 0, duration: 1, onComplete: () => {
-                document.getElementById('loader').style.display = 'none';
-                initHeroAnimations();
-            }});
-        });
-
-        function initHeroAnimations() {
-            const tl = gsap.timeline();
-            tl.to("#hero-sub", { opacity: 1, y: -20, duration: 0.8 })
-              .to("#hero-title", { opacity: 1, y: -20, duration: 0.8 }, "-=0.4")
-              .to("#hero-desc", { opacity: 1, y: -20, duration: 0.8 }, "-=0.4")
-              .to("#hero-btns", { opacity: 1, y: -20, duration: 0.8 }, "-=0.4");
-        }
-
-        // Custom Cursor Movement
-        document.addEventListener('mousemove', (e) => {
-            gsap.to("#cursor", { x: e.clientX - 10, y: e.clientY - 10, duration: 0.1 });
-        });
-    </script>
+    <!-- Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/three-scene.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/menu-logic.js"></script>
 </body>
 </html>

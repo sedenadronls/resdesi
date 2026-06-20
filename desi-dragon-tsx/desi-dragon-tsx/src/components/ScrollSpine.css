@@ -1,0 +1,32 @@
+.spine-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100vh;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.spine-track {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--jade-glow));
+}
+
+.spine-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, var(--jade-bright), var(--lacquer-bright));
+  box-shadow: 0 0 12px var(--jade-bright);
+  transition: height 0.1s linear;
+}
+
+@media (max-width: 760px) {
+  .spine-wrap {
+    width: 3px;
+  }
+}

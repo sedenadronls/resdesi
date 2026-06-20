@@ -1,0 +1,90 @@
+.review-track {
+  display: flex;
+  gap: 28px;
+  max-width: 1180px;
+  margin: 0 auto;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+}
+
+.review-track::-webkit-scrollbar {
+  height: 4px;
+}
+
+.review-track::-webkit-scrollbar-thumb {
+  background: var(--jade);
+  border-radius: 4px;
+}
+
+.review-card {
+  scroll-snap-align: start;
+  flex: 0 0 340px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.stars {
+  color: var(--gold-soft);
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+.review-card p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.08rem;
+  color: var(--parchment-dim);
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.review-who {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.review-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--jade), var(--lacquer));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cinzel Decorative";
+  color: var(--obsidian);
+  font-size: 0.85rem;
+}
+
+.review-who b {
+  font-size: 0.88rem;
+  color: var(--parchment);
+  display: block;
+}
+
+.review-who span {
+  font-size: 0.72rem;
+  color: var(--parchment-dim);
+}
+
+.google-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 50px auto 0;
+  max-width: 280px;
+  border: 1px solid var(--line);
+  padding: 14px 22px;
+  border-radius: 30px;
+  color: var(--parchment-dim);
+  font-size: 0.85rem;
+}
+
+.google-badge b {
+  color: var(--jade-bright);
+}

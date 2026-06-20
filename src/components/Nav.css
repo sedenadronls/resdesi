@@ -27,22 +27,6 @@ nav.scrolled {
   font-family: "Cinzel Decorative", serif;
 }
 
-.brand-mark {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid var(--jade);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(circle, var(--panel-2), var(--obsidian));
-}
-
-.brand-mark svg {
-  width: 24px;
-  height: 24px;
-}
-
 .brand-name {
   font-size: 1.05rem;
   letter-spacing: 0.12em;

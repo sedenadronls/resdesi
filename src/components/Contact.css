@@ -1,0 +1,138 @@
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 50px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 46px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 30px;
+  align-items: flex-start;
+}
+
+.contact-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--jade);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(79, 209, 165, 0.06);
+}
+
+.contact-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--jade-bright);
+  stroke: var(--jade-bright);
+}
+
+.contact-text h4 {
+  font-family: "Cinzel Decorative", serif;
+  font-size: 0.95rem;
+  color: var(--parchment);
+  margin-bottom: 5px;
+  letter-spacing: 0.04em;
+}
+
+.contact-text p,
+.contact-text a {
+  font-family: "Cormorant Garamond", serif;
+  color: var(--parchment-dim);
+  font-size: 1.05rem;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.contact-text a:hover {
+  color: var(--jade-bright);
+}
+
+.social-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 36px;
+}
+
+.social-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--jade);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--jade-bright);
+  text-decoration: none;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.social-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.social-circle:hover {
+  background: var(--jade-bright);
+  color: var(--obsidian);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px var(--jade-glow);
+}
+
+.social-circle:hover svg {
+  stroke: var(--obsidian);
+  color: var(--obsidian);
+}
+
+.map-frame {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  min-height: 380px;
+  position: relative;
+  background: var(--panel-2);
+}
+
+.map-frame iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  border: 0;
+  filter: invert(0.92) hue-rotate(120deg) contrast(0.9) brightness(0.95);
+}
+
+.map-pin-label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(11, 15, 13, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--jade);
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  color: var(--jade-bright);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+@media (max-width: 980px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}

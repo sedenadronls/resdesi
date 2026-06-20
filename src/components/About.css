@@ -1,0 +1,77 @@
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.about-emblem {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.about-emblem svg {
+  width: 78%;
+  animation: rotateSlow 26s linear infinite;
+  filter: drop-shadow(0 0 30px var(--jade-glow));
+}
+
+@keyframes rotateSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about-emblem .ring {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed var(--line);
+  border-radius: 50%;
+  animation: rotateSlow 40s linear infinite reverse;
+}
+
+.about-text p {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+  line-height: 1.85;
+  color: var(--parchment-dim);
+  margin-bottom: 20px;
+}
+
+.about-text p strong {
+  color: var(--jade-bright);
+  font-weight: 600;
+}
+
+.about-stats {
+  display: flex;
+  gap: 50px;
+  margin-top: 38px;
+  flex-wrap: wrap;
+}
+
+.stat b {
+  display: block;
+  font-family: "Cinzel Decorative", serif;
+  font-size: 2.1rem;
+  color: var(--jade-bright);
+}
+
+.stat span {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+}
+
+@media (max-width: 980px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
